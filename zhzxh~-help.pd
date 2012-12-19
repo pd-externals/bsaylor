@@ -1,4 +1,4 @@
-#N canvas 1 53 418 347 10;
+#N canvas 1 88 418 347 10;
 #X floatatom 127 195 5 0 0 0 - - -;
 #X obj 76 307 dac~;
 #X obj 78 277 *~;
@@ -21,17 +21,17 @@
 ;
 #X obj 99 67 mtof;
 #X obj 99 93 osc~ 50;
-#N canvas 85 176 494 344 META 0;
+#N canvas 83 184 494 344 META 0;
 #X text 12 65 PLATFORM windows macosx gnulinux;
 #X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 85 INLET_0 signal;
 #X text 12 105 INLET_1 float;
 #X text 12 125 OUTLET_0 signal;
-#X text 12 5 KEYWORDS signal needs_work (description?);
 #X text 12 25 LICENSE GPL v2;
 #X text 12 145 AUTHOR Benjamin R. Saylor <bensaylor@fastmail.fm>;
 #X text 12 45 DESCRIPTION needs a description;
+#X text 12 5 KEYWORDS signal;
 #X restore 356 305 pd META;
 #X connect 0 0 7 1;
 #X connect 2 0 1 0;

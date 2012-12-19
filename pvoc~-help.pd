@@ -1,4 +1,4 @@
-#N canvas 1 53 760 635 10;
+#N canvas 1 88 760 635 10;
 #X obj 265 611 dac~;
 #X obj 304 561 vsl 8 64 0 1 0 1 empty empty empty 0 -8 0 8 -260818
 -1 -1 3200 1;
@@ -48,7 +48,7 @@
 #X msg 125 331 3;
 #X text 8 6 pvoc~ 0.2 Ben Saylor bensaylor@fastmail.fm;
 #X obj 99 571 pvoc~ sample 2048 4;
-#N canvas 381 312 494 344 META 0;
+#N canvas 379 320 494 344 META 0;
 #X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 65 INLET_0 signal locking transients notransients;
@@ -57,7 +57,7 @@ Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 125 AUTHOR Benjamin R. Saylor <bensaylor@fastmail.fm>;
 #X text 12 45 DESCRIPTION needs a description;
-#X text 12 5 KEYWORDS signal needs_work (description);
+#X text 12 5 KEYWORDS signal;
 #X restore 691 588 pd META;
 #X connect 1 0 2 1;
 #X connect 2 0 0 0;
