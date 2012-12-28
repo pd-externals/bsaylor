@@ -7,7 +7,7 @@
 #include <string.h>
 #include "m_pd.h"
 
-#ifdef NT
+#ifdef _MSC_VER
 #define inline __inline
 #define M_PI 3.14159265358979323846
 #pragma warning( disable : 4244 )
@@ -56,9 +56,11 @@ static inline float run_svf(t_svf *sv, float in) {
         in = sv->qnrm * in ;
         for (i=0; i < F_R; i++) {
                 // only needed for pentium chips
-	  // OLD VERSION
-	   in = FLUSH_TO_ZERO(in);
-	   sv->l = FLUSH_TO_ZERO(sv->l);
+                if(PD_BIGORSMALL(in)) in = 0.;
+                if(PD_BIGORSMALL(sv->l)) sv->l = 0.;
+        // OLD VERSION
+        //in = FLUSH_TO_ZERO(in);
+        //sv->l = FLUSH_TO_ZERO(sv->l);
 	  // new versions, thanks to Damon Chaplin, inserted by Ed Kelly, not yet working!!!
 	  //in  = ((int)in & 0x7f800000)==0?0.0f:in;
 	   //sv->l = ((int)sv->l & 0x7f800000)==0?0.0f:sv->l;
