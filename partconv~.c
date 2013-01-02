@@ -252,7 +252,7 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 	int i;
 	int j;
 	t_garray *arrayobj;
-	t_float *array;
+	t_word *array;
 	int arraysize;
 	int arraypos;
 
@@ -263,7 +263,7 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 			pd_error(x, "partconv~: %s: no such array", x->arrayname->s_name);
 			return;
 		}
-	} else if ( ! garray_getfloatarray(arrayobj, &arraysize, &array)) {
+	} else if ( ! garray_getfloatwords(arrayobj, &arraysize, &array)) {
 		pd_error(x, "%s: bad template", x->arrayname->s_name);
 		return;
 	}
@@ -286,7 +286,7 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 		x->irpart_fd[i] = (fftwf_complex *) x->irpart_td[i];
 		x->irpart_plan = fftwf_plan_dft_r2c_1d(x->fftsize, x->irpart_td[i], x->irpart_fd[i], FFTW_MEASURE);
 		for (j = 0; j < x->partsize && arraypos < arraysize; j++, arraypos++) {
-			x->irpart_td[i][j] = array[arraypos];
+			x->irpart_td[i][j] = array[arraypos].w_float;
 		}
 		for ( ; j < x->paddedsize; j++) {
 			x->irpart_td[i][j] = 0;
