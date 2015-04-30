@@ -47,7 +47,7 @@ typedef struct _pvoc {
 	t_object x_obj;
 	t_symbol *arrayname;
 	t_garray *arrayobj;
-	t_float *array;
+	t_word *array;
 	int arraysize;
 	double *window;
 	int fftsize;
@@ -90,8 +90,8 @@ static inline double interpolate(t_pvoc *x, double t)
 		return 0.0;
 	else {
 		int x_1 = t;
-		double y_1 = x->array[x_1];
-		double y_2 = x->array[x_1 + 1];
+		double y_1 = x->array[x_1].w_float;
+		double y_2 = x->array[x_1 + 1].w_float;
 
 		return (y_2 - y_1) * (t - x_1) + y_1;
 	}
@@ -281,7 +281,7 @@ static void setarray(t_pvoc *x, t_symbol *s)
  		if (*x->arrayname->s_name) pd_error(x, "pvoc~: %s: no such array", x->arrayname->s_name);
 		x->array = NULL;
 		x->arraysize = 0;
-	} else if ( ! garray_getfloatarray(x->arrayobj, &x->arraysize, &x->array)) {
+	} else if ( ! garray_getfloatwords(x->arrayobj, &x->arraysize, &x->array)) {
  		error("%s: bad template", x->arrayname->s_name);
 		x->array = NULL;
 		x->arraysize = 0;
