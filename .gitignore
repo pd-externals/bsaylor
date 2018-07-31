@@ -1,0 +1,7 @@
+# build artifacts
+*.dll
+*.pd_darwin
+*.dylib
+*.pd_linux
+*.so
+*.o
