@@ -20,9 +20,7 @@ bensaylor's Home
 
 
 
-susloop~: sample player with various loop methods (ping-pong, ... ) think
-tracker. svf~  This is a signal-controlled port of Steve Harris' state
-variable filter LADSPA plugin.
+susloop~: sample player with various loop methods (ping-pong, ... )
 
 
 
