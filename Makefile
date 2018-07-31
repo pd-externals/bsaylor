@@ -13,8 +13,9 @@ lib.name = bsaylor
 
 objects = aenv~ partconv~ pvoc~ susloop~ svf~ zhzxh~
 
-partconv~.class.ldlibs = -lfftw3f
-pvoc~.class.ldlibs = -lfftw3
+# link statically
+partconv~.class.ldlibs = -l:libfftw3f.a
+pvoc~.class.ldlibs = -l:libfftw3.a
 
 class.sources = $(addsuffix .c,$(objects))
 
