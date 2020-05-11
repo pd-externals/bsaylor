@@ -132,6 +132,7 @@ static t_int *partconv_perform(t_int *w)
 	int k;	// bin
 	int p;	// partition
 	int endpart;
+	float *fbuf;
 
 #ifdef USE_SSE
 	int v1;
@@ -149,7 +150,12 @@ static t_int *partconv_perform(t_int *w)
 	float *sumbuf1ptr;
 	float *sumbuf2ptr;
 
-	memcpy(&(x->inbuf[x->inbufpos]), in, n*sizeof(float));  // gather a block of input into input buffer
+	/* gather a block of input into input buffer */
+	fbuf = &(x->inbuf[x->inbufpos]);
+	for(i=0; i<n; i++) {
+		*fbuf++=*in++;
+	}
+
 	x->inbufpos += n;
 	if (x->inbufpos >= x->partsize) {
 		// input buffer is full, so we begin a new cycle
