@@ -247,7 +247,7 @@ static void partconv_free(t_partconv *x)
 		fftwf_free(x->irpart_td[i]);
 	fftwf_free(x->input_td);
 	fftwf_destroy_plan(x->input_plan);
-	for (i  = 0; i < x->nsumbufs; i++) {
+	for (i = 0; i < x->nsumbufs; i++) {
 		fftwf_free(x->sumbufs[i].fd);
 		fftwf_destroy_plan(x->sumbufs[i].plan);
 	}
@@ -308,12 +308,12 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 	// allocate buffer for DFT of padded input
 	x->input_td = fftwf_malloc(sizeof(float) * x->paddedsize);	// float array into which input block is copied and padded
 	x->input_fd = (fftwf_complex *) x->input_td;			// fftwf_complex pointer to the same array to facilitate in-place fft
-	x->input_plan =  fftwf_plan_dft_r2c_1d(x->fftsize, x->input_td, x->input_fd, FFTW_MEASURE);
+	x->input_plan = fftwf_plan_dft_r2c_1d(x->fftsize, x->input_td, x->input_fd, FFTW_MEASURE);
 
 	// set up circular list/array of buffers for accumulating results of convolution
 	x->nsumbufs = x->nparts + 2;
 	x->sumbuf = &(x->sumbufs[0]);
-	for (i  = 0; i < x->nsumbufs; i++) {
+	for (i = 0; i < x->nsumbufs; i++) {
 		x->sumbufs[i].index = i;
 		x->sumbufs[i].fd = fftwf_malloc(sizeof(float) * x->paddedsize);
 		memset(x->sumbufs[i].fd, 0, sizeof(float) * x->paddedsize);
