@@ -124,8 +124,8 @@ static void partconv_deal_work(t_partconv *x)
 static t_int *partconv_perform(t_int *w)
 {
 	t_partconv *x = (t_partconv *)(w[1]);
-	t_float *in = (t_float *)(w[2]);
-	t_float *out = (t_float *)(w[3]);
+	t_sample *in = (t_sample *)(w[2]);
+	t_sample *out = (t_sample *)(w[3]);
 	int n = (int)(w[4]);
 	int i;
 	int j;
