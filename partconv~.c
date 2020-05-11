@@ -267,8 +267,10 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 	if ( ! (arrayobj = (t_garray *)pd_findbyclass(x->arrayname, garray_class))) {
 		if (*x->arrayname->s_name) {
 			pd_error(x, "partconv~: %s: no such array", x->arrayname->s_name);
-			return;
+		} else {
+			pd_error(x, "partconv~: no such array");
 		}
+		return;
 	} else if ( ! garray_getfloatwords(arrayobj, &arraysize, &array)) {
 		pd_error(x, "%s: bad template", x->arrayname->s_name);
 		return;
