@@ -150,6 +150,14 @@ static t_int *partconv_perform(t_int *w)
 	float *sumbuf1ptr;
 	float *sumbuf2ptr;
 
+	if (!x->inbuf) {
+		/* no convolution kernel, pass the input through */
+		for(i=0; i<n; i++) {
+			*out++=*in++;
+		}
+		return (w+5);
+	}
+
 	/* gather a block of input into input buffer */
 	fbuf = &(x->inbuf[x->inbufpos]);
 	for(i=0; i<n; i++) {
