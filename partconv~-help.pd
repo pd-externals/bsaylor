@@ -10,8 +10,8 @@
 #X obj 302 309 t b s;
 #X obj 302 240 bng 32 250 50 0 empty empty empty 0 -6 0 8 -260818 -1
 -1;
-#X obj 331 466 vsl 8 128 0 100 0 1 empty empty empty 0 -8 0 8 -260818
--1 -1 9700 1;
+#X obj 331 466 vsl 15 128 0 100 0 1 empty empty empty 0 -8 0 8 -260818
+-1 -1 0 1;
 #X text 300 219 load a soundfile to use as the impulse response;
 #X text 9 127 test with an impulse;
 #X text 431 7 Ben Saylor - bensaylor@fastmail.fm;
