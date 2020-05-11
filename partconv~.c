@@ -238,7 +238,7 @@ static t_int *partconv_perform(t_int *w)
 
 #endif // __VEC__
 
-static void partconv_free(t_partconv *x)
+static void partconv_fftw_free(t_partconv *x)
 {
 	int i;
 
@@ -251,6 +251,10 @@ static void partconv_free(t_partconv *x)
 		fftwf_free(x->sumbufs[i].fd);
 		fftwf_destroy_plan(x->sumbufs[i].plan);
 	}
+}
+static void partconv_free(t_partconv *x)
+{
+	partconv_fftw_free(x);
 }
 
 static void partconv_set(t_partconv *x, t_symbol *s)
@@ -278,7 +282,7 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 
 	// if the IR has already been prepared, free everything first
 	if (x->ir_prepared == 1) {
-		partconv_free(x);
+		partconv_fftw_free(x);
 	}
 
 	// caculate number of partitions
