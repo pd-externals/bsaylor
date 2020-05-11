@@ -243,9 +243,17 @@ static void partconv_fftw_free(t_partconv *x)
 	int i;
 
 	fftwf_free(x->inbuf);
+	x->inbuf = 0;
+
 	for (i = 0; i < x->nparts; i++)
+	{
 		fftwf_free(x->irpart_td[i]);
+		x->irpart_td[i] = 0;
+	}
+
 	fftwf_free(x->input_td);
+	x->input_td = 0;
+
 	fftwf_destroy_plan(x->input_plan);
 	for (i = 0; i < x->nsumbufs; i++) {
 		fftwf_free(x->sumbufs[i].fd);
