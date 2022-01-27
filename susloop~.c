@@ -102,12 +102,14 @@ static void *susloop_new(t_symbol *s, int argc, t_atom *argv)
 	switch (argc) {
 		case 4:
 			x->startpos = atom_getfloat(argv+3);
+			/* falls through */
 		case 3:
 			looptype = atom_getint(argv+2);
 			if (looptype == 0)
 				x->susloop_func = susloop_forward;
 			else
 				x->susloop_func = susloop_pingpong;
+			/* falls through */
 		case 2:
 			x->a = atom_getfloat(argv);
 			x->b = atom_getfloat(argv+1);
