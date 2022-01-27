@@ -301,7 +301,7 @@ static void partconv_set(t_partconv *x, t_symbol *s)
 		partconv_fftw_free(x);
 	}
 
-	// caculate number of partitions
+	// calculate number of partitions
 	x->nparts = arraysize / x->partsize;
 	if (arraysize % x->partsize != 0)
 		x->nparts++;
