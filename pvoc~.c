@@ -278,11 +278,11 @@ static void setarray(t_pvoc *x, t_symbol *s)
 {
 	x->arrayname = s;
 	if ( ! (x->arrayobj = (t_garray *)pd_findbyclass(x->arrayname, garray_class))) {
- 		if (*x->arrayname->s_name) pd_error(x, "pvoc~: %s: no such array", x->arrayname->s_name);
+		if (*x->arrayname->s_name) pd_error(x, "pvoc~: %s: no such array", x->arrayname->s_name);
 		x->array = NULL;
 		x->arraysize = 0;
 	} else if ( ! garray_getfloatwords(x->arrayobj, &x->arraysize, &x->array)) {
- 		error("%s: bad template", x->arrayname->s_name);
+		pd_error(x, "%s: bad template", x->arrayname->s_name);
 		x->array = NULL;
 		x->arraysize = 0;
 	} else {
@@ -321,7 +321,7 @@ static void *pvoc_new(t_symbol *s, int argc, t_atom *argv)
 
 	if (argc != 3) {
 		post("argc = %d", argc);
-		error("pvoc~: usage: [pvoc~ <arrayname> <fftsize> <overlap>]");
+		pd_error(0, "pvoc~: usage: [pvoc~ <arrayname> <fftsize> <overlap>]");
 		return NULL;
 	}
 

@@ -376,7 +376,7 @@ static void *partconv_new(t_symbol *s, int argc, t_atom *argv)
 
 	if (argc != 2) {
 		post("argc = %d", argc);
-		error("partconv~: usage: [partconv~ <arrayname> <partsize>]\n\t- partition size must be a power of 2 >= blocksize");
+		pd_error(0, "partconv~: usage: [partconv~ <arrayname> <partsize>]\n\t- partition size must be a power of 2 >= blocksize");
 		return NULL;
 	}
 
@@ -384,7 +384,7 @@ static void *partconv_new(t_symbol *s, int argc, t_atom *argv)
 	x->partsize = atom_getfloatarg(1, argc, argv);
 	if (x->partsize <= 0 || x->partsize != (1 << ilog2(x->partsize)))
 	{
-		error("partconv~: partition size not a power of 2");
+		pd_error(0, "partconv~: partition size not a power of 2");
 		return NULL;
 	}
 	x->fftsize = 2 * x->partsize;
