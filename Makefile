@@ -11,11 +11,14 @@
 
 lib.name = bsaylor
 
+FFTW3_CFLAGS =
+FFTW3_LIBS = -l:libfftw3f.a
+
 objects = aenv~ partconv~ pvoc~ susloop~ svf~ zhzxh~
 
 # link statically
-partconv~.class.ldlibs = -l:libfftw3f.a
-pvoc~.class.ldlibs = -l:libfftw3.a
+partconv~.class.ldlibs = $(FFTW3_LIBS)
+pvoc~.class.ldlibs = $(FFTW3_LIBS)
 
 class.sources = $(addsuffix .c,$(objects))
 
@@ -23,7 +26,7 @@ class.sources = $(addsuffix .c,$(objects))
 datafiles = $(addsuffix -help.pd,$(objects)) LICENSE.txt README.txt
 datadirs = examples
 
-cflags = -Wno-unused -Wno-unused-parameter 
+cflags += -Wno-unused -Wno-unused-parameter $(FFTW3_CFLAGS)
 
 # include Makefile.pdlibbuilder from submodule directory 'pd-lib-builder'
 PDLIBBUILDER_DIR=pd-lib-builder/
