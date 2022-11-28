@@ -1,10 +1,8 @@
-#N canvas 1 88 760 635 10;
+#N canvas 1 88 680 638 10;
 #X obj 265 611 dac~;
-#X obj 304 561 vsl 8 64 0 1 0 1 empty empty empty 0 -8 0 8 -260818
--1 -1 3200 1;
+#X obj 304 561 vsl 8 64 0 1 0 1 empty empty empty 0 -8 0 8 #fcac44 #000000 #000000 3200 1;
 #X obj 265 587 *~;
-#X obj 68 168 cnv 15 580 220 empty empty empty 20 12 0 14 -195568 -66577
-0;
+#X obj 68 168 cnv 15 580 220 empty empty empty 20 12 0 14 #bcbcbc #404040 0;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array sample 62079 float 0;
 #X coords 0 1 62078 -1 560 100 1;
@@ -13,27 +11,23 @@
 #X obj 346 526 soundfiler;
 #X obj 346 547 s length;
 #X obj 346 485 loadbang;
-#X obj 77 182 hsl 560 15 0 1 0 0 empty empty time-position -2 -6 0
-8 -233017 -1 -1 0 1;
-#X obj 214 232 vsl 15 128 0.5 2 1 0 empty empty pitch-shift 0 -8 0
-8 -261681 -1 -1 0 1;
+#X obj 77 182 hsl 560 15 0 1 0 0 empty empty time-position -2 -6 0 8 #e0e0e0 #000000 #000000 0 1;
+#X obj 214 232 vsl 15 128 0.5 2 1 0 empty empty pitch-shift 0 -8 0 8 #fce0c0 #000000 #000000 0 1;
 #X msg 182 213 1;
-#X floatatom 214 366 5 0 0 0 - - -;
-#X obj 280 232 vsl 15 128 0 1 0 0 empty empty phase-locking 0 -8 0
-8 -225280 -1 -1 0 1;
-#X floatatom 280 366 5 0 0 0 - - -;
+#X floatatom 214 366 5 0 0 0 - - - 0;
+#X obj 280 232 vsl 15 128 0 1 0 0 empty empty phase-locking 0 -8 0 8 #d8fcfc #000000 #000000 0 1;
+#X floatatom 280 366 5 0 0 0 - - - 0;
 #X obj 74 532 line~;
 #X msg 74 510 \$1 200;
 #X obj 74 488 *;
-#X obj 90 423 r length;
+#X obj 89 423 r length;
 #X text 6 28 [pvoc~ <array> <fftsize> <overlap>];
 #X obj 226 551 lop~ 10;
 #X msg 433 486 read -resize \$1 sample;
 #X obj 433 466 openpanel;
-#X obj 548 347 bng 32 250 50 0 empty empty empty 0 -6 0 8 -260818 -1
--1;
+#X obj 548 347 bng 32 250 50 0 empty empty empty 0 -6 0 8 #fcac44 #000000 #000000;
 #X msg 280 457 locking \$1;
-#X msg 99 447 setarray sample;
+#X msg 99 467 setarray sample;
 #X msg 380 302 transients 0 6227 35716 53368;
 #X msg 380 324 notransients;
 #X text 380 285 de-smear transients at these locations;
@@ -49,8 +43,7 @@
 #X text 8 6 pvoc~ 0.2 Ben Saylor bensaylor@fastmail.fm;
 #X obj 99 571 pvoc~ sample 2048 4;
 #N canvas 379 320 494 344 META 0;
-#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan Wilkes for Pd version 0.42.;
 #X text 12 65 INLET_0 signal locking transients notransients;
 #X text 12 85 INLET_1 signal;
 #X text 12 105 OUTLET_0 signal;
@@ -58,7 +51,8 @@ Wilkes for Pd version 0.42.;
 #X text 12 125 AUTHOR Benjamin R. Saylor <bensaylor@fastmail.fm>;
 #X text 12 45 DESCRIPTION needs a description;
 #X text 12 5 KEYWORDS signal;
-#X restore 691 588 pd META;
+#X restore 586 608 pd META;
+#X obj 89 446 t f f;
 #X connect 1 0 2 1;
 #X connect 2 0 0 0;
 #X connect 2 0 0 1;
@@ -74,8 +68,7 @@ Wilkes for Pd version 0.42.;
 #X connect 15 0 39 0;
 #X connect 16 0 15 0;
 #X connect 17 0 16 0;
-#X connect 18 0 17 1;
-#X connect 18 0 25 0;
+#X connect 18 0 41 0;
 #X connect 20 0 39 1;
 #X connect 21 0 6 0;
 #X connect 22 0 21 0;
@@ -93,3 +86,5 @@ Wilkes for Pd version 0.42.;
 #X connect 36 0 35 0;
 #X connect 37 0 36 0;
 #X connect 39 0 2 0;
+#X connect 41 0 17 1;
+#X connect 41 1 25 0;
