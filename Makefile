@@ -1,11 +1,11 @@
-# Makefile to build library 'mlib' for Pure Data.
+# Makefile to build library 'bsaylor' for Pure Data.
 # Needs Makefile.pdlibbuilder as helper makefile for platform-dependent build
 # settings and rules.
 #
 # use : make pdincludepath=/path/to/pure-data/src/
 #
 # The following command will build the external and install the distributable 
-# files into a subdirectory called build/moonlib :
+# files into a subdirectory called build/bsaylor :
 #
 # make install pdincludepath=../pure-data/src/ objectsdir=./build
 
